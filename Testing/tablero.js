@@ -104,32 +104,40 @@ export class Tablero {
         ];
     }
 
-    static imprimeTablero(tablero) {
-        for (let y = 0; y < tablero.length; y++) {
+    imprimeTablero() {
+        for (let y = 0; y < this.tablero.length; y++) {
             let cadena = "";
-            for (let x = 0; x < tablero.length; x++) {
-                cadena += tablero[y][x].val;
+            for (let x = 0; x < this.tablero.length; x++) {
+                cadena += this.tablero[y][x].val;
                 // console.log(Tablero[y][x].val);
             }
             console.log(cadena);
         }
     }
-    static recorreTablero(tablero) {
-        for (let y = 0; y < tablero.length; y++) {
-            for (let x = 0; x < tablero.length; x++) {
-                Celula.isCellAlive(
-                    tablero[y][x],
-                    Celula.numberofNeightbours(tablero[y][x], tablero)
+    recorreTablero() {
+        for (let y = 0; y < this.tablero.length; y++) {
+            for (let x = 0; x < this.tablero.length; x++) {
+                this.tablero[y][x] = Celula.isCellAlive(
+                    this.tablero[y][x],
+                    Celula.numberofNeightbours(this.tablero[y][x], this.tablero)
                 );
 
                 // console.log(Tablero[y][x].val);
             }
         }
     }
-    static ShowScream(tablero) {
+    ShowScream(tablero) {
         Tablero.recorreTablero(tablero);
 
         console.log("\n");
         console.log("\n");
+    }
+    giveCellPosition() {
+        for (let y = 0; y < this.tablero.length; y++) {
+            for (let x = 0; x < this.tablero.length; x++) {
+                this.tablero[y][x].positionX = x;
+                this.tablero[y][x].positionY = y;
+            }
+        }
     }
 }

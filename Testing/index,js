@@ -1,7 +1,6 @@
 import { Tablero } from "./tablero.js";
-
-let tablero = new Tablero().tablero;
-
+let tablero = new Tablero();
+tablero.giveCellPosition();
 // celula.giveCellPosition(tablero);
 // console.log(tablero[2][3]);
 // let n = Celula.numberofNeightbours(tablero[2][3], tablero);
@@ -12,6 +11,8 @@ let tablero = new Tablero().tablero;
 // for (let x = 0; x < 50; x++) {
 //   Tablero.ShowScream();
 // }
+
 for (let x = 0; x < 50; x++) {
-    Tablero.ShowScream(tablero);
+    tablero.recorreTablero();
+    tablero.imprimeTablero();
 }
