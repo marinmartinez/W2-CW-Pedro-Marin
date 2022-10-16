@@ -1,4 +1,4 @@
-export class Celula {
+export class Cell {
     constructor(value) {
         this.isAlive = false;
         this.positionX = 0;
