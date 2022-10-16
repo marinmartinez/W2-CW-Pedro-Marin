@@ -1,4 +1,4 @@
-export class Celula {
+export class Cell {
     constructor(value) {
         this.isAlive = false;
         this.positionX = 0;
@@ -45,17 +45,7 @@ export class Celula {
             cell.isAlive = false;
             cell.val = "-";
         }
-        return cell.isAlive;
+        return cell;
     }
     //probada
-    giveCellPosition(tablero) {
-        for (let y = 0; y < tablero.length; y++) {
-            for (let x = 0; x < tablero.length; x++) {
-                tablero[y][x].positionX = x;
-                tablero[y][x].positionY = y;
-                console.log(tablero[y][x].positionX);
-                console.log(tablero[y][x].val);
-            }
-        }
-    }
 }

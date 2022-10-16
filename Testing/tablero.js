@@ -1,135 +1,149 @@
-import { Celula } from "./celula.js";
+import { Cell } from "./celula.js";
 export class Tablero {
     constructor() {
-        this.tablero = [
+        this.table = [
             [
-                new Celula(),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula(),
+                new Cell(),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell(),
             ],
             [
-                new Celula("*"),
-                new Celula("*"),
-                new Celula("*"),
-                new Celula("*"),
-                new Celula("*"),
-                new Celula("*"),
-                new Celula("*"),
-                new Celula("*"),
-                new Celula("*"),
+                new Cell("*"),
+                new Cell("*"),
+                new Cell("*"),
+                new Cell("*"),
+                new Cell("*"),
+                new Cell("*"),
+                new Cell("*"),
+                new Cell("*"),
+                new Cell("*"),
             ],
             [
-                new Celula(),
-                new Celula(),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula("*"),
+                new Cell(),
+                new Cell(),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell("*"),
             ],
             [
-                new Celula(),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
+                new Cell(),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
             ],
             [
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
             ],
             [
-                new Celula("*"),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula(),
+                new Cell("*"),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell(),
             ],
             [
-                new Celula(),
-                new Celula(),
-                new Celula(),
-                new Celula(),
-                new Celula(),
-                new Celula(),
-                new Celula(),
-                new Celula(),
-                new Celula("*"),
+                new Cell(),
+                new Cell(),
+                new Cell(),
+                new Cell(),
+                new Cell(),
+                new Cell(),
+                new Cell(),
+                new Cell(),
+                new Cell("*"),
             ],
             [
-                new Celula("*"),
-                new Celula(),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula("*"),
-                new Celula("*"),
+                new Cell("*"),
+                new Cell(),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell("*"),
+                new Cell("*"),
             ],
             [
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula(),
-                new Celula("*"),
-                new Celula(),
-                new Celula(),
-                new Celula(),
-                new Celula(),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell(),
+                new Cell("*"),
+                new Cell(),
+                new Cell(),
+                new Cell(),
+                new Cell(),
             ],
         ];
     }
 
-    static imprimeTablero(tablero) {
-        for (let y = 0; y < tablero.length; y++) {
+    printTable() {
+        for (let y = 0; y < this.table.length; y++) {
             let cadena = "";
-            for (let x = 0; x < tablero.length; x++) {
-                cadena += tablero[y][x].val;
+            for (let x = 0; x < this.table.length; x++) {
+                cadena += this.table[y][x].val;
                 // console.log(Tablero[y][x].val);
             }
             console.log(cadena);
         }
     }
-    static recorreTablero(tablero) {
-        for (let y = 0; y < tablero.length; y++) {
-            for (let x = 0; x < tablero.length; x++) {
-                Celula.isCellAlive(
-                    tablero[y][x],
-                    Celula.numberofNeightbours(tablero[y][x], tablero)
+    traversTable() {
+        for (let y = 0; y < this.table.length; y++) {
+            for (let x = 0; x < this.table.length; x++) {
+                this.table[y][x] = Cell.isCellAlive(
+                    this.table[y][x],
+                    Cell.numberofNeightbours(this.table[y][x], this.table)
                 );
-
+                console.log(this.table[y][x]);
                 // console.log(Tablero[y][x].val);
             }
         }
     }
-    static ShowScream(tablero) {
-        Tablero.recorreTablero(tablero);
-
+    showScream(table) {
+        table.recorreTablero();
+        table.imprimeTablero();
         console.log("\n");
         console.log("\n");
+    }
+    giveCellPosition() {
+        for (let y = 0; y < this.table.length; y++) {
+            for (let x = 0; x < this.table.length; x++) {
+                this.table[y][x].positionX = x;
+                this.table[y][x].positionY = y;
+                console.log(
+                    "" +
+                        this.table[y][x].positionY +
+                        "  " +
+                        this.table[y][x].positionX
+                );
+            }
+        }
     }
 }

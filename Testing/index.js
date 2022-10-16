@@ -1,17 +1,11 @@
 import { Tablero } from "./tablero.js";
-
-let tablero = new Tablero().tablero;
-
+import { Cell } from "./celula.js";
+const tablero = new Tablero();
+tablero.giveCellPosition();
+tablero.traversTable();
 // celula.giveCellPosition(tablero);
 // console.log(tablero[2][3]);
 // let n = Celula.numberofNeightbours(tablero[2][3], tablero);
 // console.log(n);
 // console.log(Celula.isCellAlive(tablero[2][3], n));
 // console.log(tablero[2][3]);
-
-// for (let x = 0; x < 50; x++) {
-//   Tablero.ShowScream();
-// }
-for (let x = 0; x < 50; x++) {
-    Tablero.ShowScream(tablero);
-}
