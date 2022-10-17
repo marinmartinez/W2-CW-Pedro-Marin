@@ -109,7 +109,6 @@ export class Tablero {
             let cadena = "";
             for (let x = 0; x < this.table.length; x++) {
                 cadena += this.table[y][x].val;
-                // console.log(Tablero[y][x].val);
             }
             console.log(cadena);
         }
@@ -122,13 +121,12 @@ export class Tablero {
                     Cell.numberofNeightbours(this.table[y][x], this.table)
                 );
                 console.log(this.table[y][x]);
-                // console.log(Tablero[y][x].val);
             }
         }
     }
     showScream(table) {
-        table.recorreTablero();
-        table.imprimeTablero();
+        table.traversTable();
+        table.printTable();
         console.log("\n");
         console.log("\n");
     }

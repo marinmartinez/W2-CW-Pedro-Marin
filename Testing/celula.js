@@ -3,10 +3,10 @@ export class Cell {
         this.isAlive = false;
         this.positionX = 0;
         this.positionY = 0;
-        this.numerodeVecinas = 0;
+        this.numbernb = 0;
         this.val = "-";
 
-        if (value === "*") {
+        valif (value === "*") {
             this.val = value;
             this.isAlive = true;
         }
@@ -18,9 +18,9 @@ export class Cell {
             for (let x = cell.positionX - 1; x <= cell.positionX + 1; x++) {
                 if (
                     y >= 0 &&
-                    y <= tablero.length &&
+                    y < tablero.length &&
                     x >= 0 &&
-                    x <= tablero.length
+                    x < tablero.length
                 ) {
                     if (tablero[y][x].isAlive === true) {
                         neighbours++;
@@ -47,5 +47,4 @@ export class Cell {
         }
         return cell;
     }
-    //probada
 }
